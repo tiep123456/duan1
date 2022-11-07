@@ -327,7 +327,7 @@ body{
 
 form{
     margin: 0 auto;
-    min-height: 500px;
+    /* min-height: 500px; */
     width: 80%;
   
 }
@@ -440,9 +440,10 @@ h2{
 }
 
 .imgicon2{
-margin-right: 20px;
-min-height: 40px;
-float: left;
+    margin-right: 20px;
+    min-height: 20px;
+    float: left;
+    margin-top: 10px;
 }
 .icon2 img{
     width: 24px;
@@ -484,6 +485,10 @@ float: left;
 }
 
 
-
+.main-home {
+    background-color: red;
+    width: 900px;
+    min-height: 100px;
+}
 
 

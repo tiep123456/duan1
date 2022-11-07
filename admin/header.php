@@ -28,7 +28,6 @@
                         <li ><a href="">ĐẶT BÀN</a></li>
                     </ul>
                 </div>
-            
             </div>
         </div>
     </body>
