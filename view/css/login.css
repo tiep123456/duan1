@@ -43,7 +43,7 @@
 .bgr-image {
     width: 597px;
     height: 523px;
-    background-image: url("/view/banner-login.png");
+    background-image: url("../img/banner-login.png");
 }
 
 .bgr-form {

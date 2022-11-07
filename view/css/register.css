@@ -43,7 +43,7 @@
 .bgr-image {
     width: 597px;
     height: 623px;
-    background-image: url("/view/banner-reg.png");
+    background-image: url("../img/banner-reg.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -112,47 +112,6 @@
     font-size: 18px;
     line-height: 20px;
     text-decoration: none; /* remove underline from anchors */
-}
-
-.four-elip-btn {
-    display: flex;
-}
-
-.elip-btn {
-    margin-left: 28px;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background-color: #50597c;
-    border: none;
-}
-
-.img-gg {
-    background-image: url("../img/gg.png");
-    background-repeat: no-repeat;
-    background-position: 50% 45%;
-}
-
-.img-fb {
-    background-image: url("../img/fb.png");
-    background-repeat: no-repeat;
-    background-position: 50% 45%;
-}
-
-.img-tw {
-    background-image: url("../img/tw.png");
-    background-repeat: no-repeat;
-    background-position: 45% 65%;
-}
-
-.img-apple {
-    background-image: url("../img/apple.png");
-    background-repeat: no-repeat;
-    background-position: 50% 45%;
-}
-
-.elip-btn:hover {
-    background-color: #176697;
 }
 
 .text-foooter {
