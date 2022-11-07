@@ -1,0 +1,133 @@
+.menu-ngang a:hover:before,
+.menu-ngang a:hover:after{
+  transform: translate(0,0);
+  opacity: 1;
+}
+
+.menu-ngang a:hover {
+  color: #7c7777;
+}
+.menu-ngang a::before {
+    content: '';
+    right: 0;
+    top: 0;
+    border-top: 3px solid #101010;
+    border-right: 3px solid #230000;
+    transform: translate(-100%, 50%);
+  }
+  
+  .menu-ngang a:after {
+    content: '';
+    left: 0;
+    bottom: 0;
+    border-bottom: 3px solid #000000;
+    border-left: 3px solid #080000;
+    transform: translate(100%, -50%)
+  }
+
+  .menu-ngang {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .menu-ngang * {
+    box-sizing: border-box;
+    transition: all .35s ease;
+  }
+  
+  .menu-ngang li {
+    display: inline-block;
+    list-style: outside none none;
+    padding: 0;
+  }
+  
+  .menu-ngang a {
+    color: rgba(255,255,255,.5);
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .menu-ngang a::before,
+  .menu-ngang a::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
+  }
+
+
+  /*footer*/
+  .boxfooter4 ul {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .boxfooter4 ul li {
+    list-style: none;
+  }
+  
+  .boxfooter4 ul li a {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 80px;
+    font-size: 35px;
+    margin: 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+  }
+  
+  .boxfooter4 ul li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+  }
+  
+  .boxfooter4 ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+  
+  .boxfooter4 ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+  }
+  
+  .boxfooter4 ul li a:hover:before {
+    top: 0;
+  }
+  
+  .boxfooter4 ul li:nth-child(1) a:before{
+    background: #3b5999;
+  }
+  
+  .boxfooter4 ul li:nth-child(2) a:before{
+    background: #55acee;
+  }
+  
+  .boxfooter4 ul li:nth-child(3) a:before {
+    background: #0077b5;
+  }
+  
+  .boxfooter4 ul li:nth-child(4) a:before {
+    background: #dd4b39;
+  }
