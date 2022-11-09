@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/margin.css">
-    <link rel="stylesheet" href="../css/css3.css">
+    <?php
+    session_start();
+    $css3 = 'view/css/style.css';
+    $style = 'view/css/margin.css';
+    $margin = 'view/css/css3.css';
+    $link_img = 'view/img/';
+    $link_file = 'view/';
+    if (isset($_SESSION['login_home'])) {
+        $css3 = 'css/style.css';
+        $style = 'css/css3.css';
+        $margin = 'css/margin.css';
+        $link_img = 'img/';
+        $link_file = '';
+    }
+    ?>
+    <link rel="stylesheet" href="<?=$style?>">
+    <link rel="stylesheet" href="<?=$margin?>">
+    <link rel="stylesheet" href="<?=$css3?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&family=Pangolin&family=Roboto:wght@500&family=Saira&family=Sanchez&display=swap" rel="stylesheet">
@@ -16,42 +31,64 @@
 <body>
     <div class="row top">
         <div class="boxcenter">
-           <div class="logo"><img src="/view/img/logp.png" alt="" ></div> 
+           <div class="logo"><img src="<?=$link_img?>logp.png" alt="" ></div> 
             <div class="menu-ngang" id="id-menu">
                 <ul>
-                    <li class="mr16 "><a href="../view/home.html">TRANG CHỦ</a></li>
-                    <li class="mr16"><a href="../html/shop.html">THỰC ĐƠN</a></li>
-                    <li class="mr16"><a href="../html/login.html">LIÊN HỆ  </a></li>
-                    <li class="mr16"><a href="">TIN TỨC</a></li>
-                    <li ><a href="">ĐẶT BÀN</a></li>
+                    <li class="mr16 "><a href="<?=$link_file?>home.php">TRANG CHỦ</a></li>
+                    <li class="mr16"><a href="<?=$link_file?>shop.php">THỰC ĐƠN</a></li>
+                    <li class="mr16"><a href="#">LIÊN HỆ</a></li>
+                    <li class="mr16"><a href="#">TIN TỨC</a></li>
+                    <li ><a href="#">ĐẶT BÀN</a></li>
                 </ul>
             </div>
             <div class="login">
-                <div class="gruopicon mr16">
-                    <img src="/view/img/iconlogin.png" alt="" class="icon" >
-                    <a href="../html/login.html">
-                        <input type="submit" class="dangnhap" value="ĐĂNG NHẬP tài khoản">
-                    </a>
-                </div>
+                
+                    <!-- login -->
+                    <?php
+                    error_reporting(0);
+                    session_start();
+                    if (isset($_SESSION['username']) && ($_SESSION['username'] != "")){
+                        // echo $_SESSION['username'];
+                        echo ' <div class="gruopicon mr16">
+                                    <img src="'.$link_img.'iconlogin.png" alt="avatar" class="icon">
+                                    <a href="../index.php?act=infouser">
+                                    <input type="submit" class="dangnhap" value="'.$_SESSION['username'].'">
+                                    </a> 
+                                </div>';
 
-                <div class="gruopicon">
-                    <img src="/view/img/icon 2.png" alt="" class="icon" >
-                    <a href="../html/register.html">
-                        <input type="submit" class="dangky" value="ĐĂNG KÝ">
-                    </a>
-                </div>
+                        echo ' <div class="gruopicon">
+                                    <img src="'.$link_img.'icon 2.png" alt="" class="icon" >
+                                    <a href="../index.php?act=logout">
+                                        <input type="submit" class="dangky" value="Đăng xuất">
+                                    </a>
+                                </div> ';
+                    }else{
+                        echo ' <div class="gruopicon mr16">
+                                    <img src="'.$link_img.'iconlogin.png" alt="" class="icon" >
+                                    <a href="'.$link_file.'taikhoan/login.php">
+                                        <input type="submit" class="dangnhap" value="Đăng nhập">
+                                    </a>
+                                </div>';
+                        echo ' <div class="gruopicon">
+                                <img src="'.$link_img.'icon 2.png" alt="" class="icon" >
+                                <a href="'.$link_file.'taikhoan/register.php">
+                                    <input type="submit" class="dangky" value="Đăng ký">
+                                </a>
+                            </div> ';
+                    }
+                    ?>
             </div>  
         </div>
     </div>
     <!-- end header -->
     <div class="row banner">
-        <img src="/view/img/banner1.png" alt="">
+        <img src="<?=$link_img?>banner1.png" alt="">
     </div>
-    <div class="row content ">
+    <div class="row content">
             <div class="headtitle mt50 center "> DỊCH  VỤ  CỦA  CHÚNG  TÔI </div>
                 <div class="boxcenter2">
                     <div class="box  mr">
-                        <img src="/view/img/Rectangle 26.png" alt="" class="mb5">
+                        <img src="<?=$link_img?>Rectangle 26.png" alt="" class="mb5">
                         <h2 class="mb5">Đầu bếp</h2>
                         <span>Với sự lựa chọn tỉ mỉ về đầu
                         bếp cùng với nghiệp vụ chuyên
@@ -61,7 +98,7 @@
                     </div>
 
                     <div class="box  mr">
-                        <img src="/view/img/Rectangle 26-1.png" alt="" class="mb5">
+                        <img src="<?=$link_img?>Rectangle 26-1.png" alt="" class="mb5">
                         <h2 class="mb5">Món ăn</h2>
                         <span>Để đáp ứng nhu cầu tự do về ăn
                         uống theo quý khách, quý khách
@@ -69,7 +106,7 @@
                     </div>
 
                     <div class="box  mr ">
-                        <img src="/view/img/Rectangle 26-2.png" alt="" class="mb5">
+                        <img src="<?=$link_img?>Rectangle 26-2.png" alt="" class="mb5">
                         <h2 class="mb5">Đặt hàng trực tuyến</h2>
                         <span>Đi cùng với dịch vụ chất lượng
                         món ăn thì dịch vụ chúng tôi
@@ -79,7 +116,7 @@
                     </div>
 
                     <div class="box ">
-                        <img src="/view/img/Rectangle 26-3.png" alt="" class="mb5">
+                        <img src="<?=$link_img?>Rectangle 26-3.png" alt="" class="mb5">
                         <h2 class="mb5">Dịch vụ 24/7</h2>
                         <span>Những món ăn đảm bảo đủ tiêu
                         chuẩn an toàn thật phẩm, cùng
@@ -92,22 +129,22 @@
           
             <div class="headtitle mt50 center "> NHỮNG MÓN ĂN NỔI BẬT </div>
             <div class="boxcenter3 ">
-                <div class="tron mr60"> <img src="/view/img/sp1.png" alt=""></div>
-                <div class="tron mr60 "><img src="/view/img/sp2.png" alt=""></div>
-                <div class="tron mr60 "><img src="/view/img/sp3.png" alt=""></div>
-                <div class="tron mr60 "><img src="/view/img/sp4.png" alt=""></div>
-                <div class="tron mr60 "><img src="/view/img/sp5.png" alt=""></div>
-                <div class="tron mr60 "><img src="/view/img/sp6.png" alt=""></div>
-                <div class="tron"><img src="/view/img/sp7.png" alt=""></div>
+                <div class="tron mr60"> <img src="<?=$link_img?>sp1.png" alt=""></div>
+                <div class="tron mr60 "><img src="<?=$link_img?>sp2.png" alt=""></div>
+                <div class="tron mr60 "><img src="<?=$link_img?>sp3.png" alt=""></div>
+                <div class="tron mr60 "><img src="<?=$link_img?>sp4.png" alt=""></div>
+                <div class="tron mr60 "><img src="<?=$link_img?>sp5.png" alt=""></div>
+                <div class="tron mr60 "><img src="<?=$link_img?>sp6.png" alt=""></div>
+                <div class="tron"><img src="<?=$link_img?>sp7.png" alt=""></div>
             </div>
             <div class="hra"></div> 
             <div class="headtitle mt50 center "> NHỮNG MÓN ĂN CHÍNH </div>
             <div class="boxcenter4  ">
                 <div class="boxsp mr4">
-                    <img src="/view/img/cuarangme.png" alt="" class="img row">
+                    <img src="<?=$link_img?>cuarangme.png" alt="" class="img row">
                     <div class="contac row">    
                         <div class="cachkhoang mb20">
-                            <a href="" class="namesp">Cua ran me</a>
+                            <a href="" class="namesp">Cua rang me</a>
                             <p class="gia">300.000đ</p>
                         </div>
                         
@@ -118,11 +155,11 @@
                     </div>  
                 </div>
                 <div class="boxsp mr4">
-                    <img src="/view/img/Rectangle 21-1.png" alt="" class="img row">
+                    <img src="<?=$link_img?>Rectangle 21-1.png" alt="" class="img row">
                     
                     <div class="contac row">    
                         <div class="cachkhoang mb20">
-                            <a href="" class="namesp">Cua ran me</a>
+                            <a href="" class="namesp">Cua rang me</a>
                             <p class="gia">300.000đ</p>
                         </div>
 
@@ -133,7 +170,7 @@
                     </div>  
                 </div>
                     <div class="boxsp mr4">
-                    <img src="/view/img/Rectangle 21-2.png" alt="" class="img row">
+                    <img src="<?=$link_img?>Rectangle 21-2.png" alt="" class="img row">
                     
                     <div class="contac row">    
                         <div class="cachkhoang mb20">
@@ -148,7 +185,7 @@
                         </div>  
                     </div>
                     <div class="boxsp">
-                        <img src="/view/img/Rectangle 21-3.png" alt="" class="img row">
+                        <img src="<?=$link_img?>Rectangle 21-3.png" alt="" class="img row">
                         
                         <div class="contac row">    
                             <div class="cachkhoang mb20">
@@ -173,10 +210,14 @@
                 
             </div>
 
-         <div class="boxcenter5 ">
-            <div class="imgnen"></div>
+        <div class="boxcenter5">
+            <div id="imgnen">
+                <img src="<?=$link_img?>banner_db.png" alt="">
+            </div>
             <div class="formdatban">
-                <div class="row"><div class="textbox row center mt40">Đặt bàn online</div></div>
+                <div class="row">
+                    <div class="textbox row center mt40">Đặt bàn online</div>
+                </div>
                 
                 <div class="reservation row">
                    <div class="rv left"></div>
@@ -184,21 +225,18 @@
                     <div class="rv right"></div>
                 </div>
 
-            <div class="row form">
-                <form action="" class="dacbanonline">
-                    <input type="text" class="box-text  mr10pt" placeholder="Họ và tên" >
-                    <input type="text" class="number" placeholder="Số điện thoại">
-                    <input type="date" class="date mr10pt" placeholder="Ngày tháng">
-                    <input type="time" class="box-text " >
-                    <textarea name=""  id="yeucau-datbang" class="row" cols="30" rows="10" placeholder="Yều cầu đặt biệt"></textarea>
-                    <input type="submit" class="datngay" placeholder="Đặt Ngay">
-                </form>
+                <div class="row form">
+                    <form action="" class="dacbanonline">
+                        <input type="text" class="box-text  mr10pt" placeholder="Họ và tên" >
+                        <input type="text" class="number" placeholder="Số điện thoại">
+                        <input type="date" class="date mr10pt" placeholder="Ngày tháng">
+                        <input type="time" class="box-text " >
+                        <textarea name=""  id="yeucau-datbang" class="row" cols="30" rows="10" placeholder="Yều cầu đặt biệt"></textarea>
+                        <input type="submit" class="datngay" placeholder="Đặt Ngay">
+                    </form>
+                </div>
             </div>
-
-                
-               
-            </div>
-         </div>
+        </div>
     </div>
   
       
@@ -224,23 +262,20 @@
                 <div class="boxfooter3 pt50"> 
                     <h2>THÔNG TIN LIÊN HỆ</h2>
                         <div class="row icon2 mt20" >
-                            <img src="/view/img/iconhome.png" alt="" class="imgicon2">
+                            <img src="<?=$link_img?>iconhome.png" alt="" class="imgicon2">
                                 <a href="" class="text-footer">Quốc lộ 1A, Công Viên Phần Mềm <br>
                                 Quang Trung, Q12, TP.HCM</a>
                         </div>
 
                         <div class="row icon2">
-                            <img src="/view/img/icontele.png" alt="" class="imgicon2">
+                            <img src="<?=$link_img?>icontele.png" alt="" class="imgicon2">
                                 <a href="" class="text-footer">+84 985 225 000</a>
                         </div>
 
                         <div class="row icon2">
-                            <img src="/view/img/iconadrees.png" alt="" class="imgicon2">
+                            <img src="<?=$link_img?>iconadrees.png" alt="" class="imgicon2">
                                 <a href="" class="text-footer">supportkhachhang247@gmail.com</a>
                         </div>
-                      
-                       
-                    
                 </div>
                 <div class="boxfooter4 pt50">
                   <h2>THEO DÕI CHÚNG TÔI THÔNG <br>
@@ -262,7 +297,10 @@
             </div>
        </div>
        <div class="row team">
-            Terms and conditions  -  privacy  -  @Create: Team  <strong style="color: rgb(223, 64, 64);">FOOD RESTAURANT </strong>
+            Terms and conditions  -  privacy  -  @Create: Team
+            <a href="<?=$link_file?>html/tym.html">
+                <strong style="color: rgb(223, 64, 64);">FOOD RESTAURANT</strong>
+            </a>
        </div>
     </div>
 </body>

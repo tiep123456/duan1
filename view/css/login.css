@@ -23,27 +23,30 @@
 
 .bgr-login {
     width: 1154px;
-    height: 541px;
+    min-height: 531px;
     background-color: white;
     border-radius: 24px;
     margin: auto;
+    padding: 10px 0px;
 }
 
 .bgr-login1 {
     background-color: #39405B;
     width: 1132px;
-    height: 523px;
+    min-height: 523px;
     margin: auto;
     border-radius: 16px;
-    position: relative;
+    /* position: relative; */
     top: 10px;
     display: flex;
 }
 
 .bgr-image {
     width: 597px;
-    height: 523px;
+    min-height: 523px;
     background-image: url("../img/banner-login.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .bgr-form {
@@ -73,7 +76,7 @@
 .cre-acc {
     text-decoration: none;
     position: absolute;
-    right: 10%;
+    right: 20.5%;
     font-size: 18px;
     color: #1D9BF0;
 }
