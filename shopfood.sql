@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 07, 2022 lúc 10:11 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 7.4.29
+-- Host: 127.0.0.1
+-- Generation Time: Nov 09, 2022 at 07:29 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `shopfood`
+-- Database: `shopfood`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `binhluan_sanpham`
+-- Table structure for table `binhluan_sanpham`
 --
 
 CREATE TABLE `binhluan_sanpham` (
@@ -39,7 +39,7 @@ CREATE TABLE `binhluan_sanpham` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `binhluan_tintuc`
+-- Table structure for table `binhluan_tintuc`
 --
 
 CREATE TABLE `binhluan_tintuc` (
@@ -54,7 +54,7 @@ CREATE TABLE `binhluan_tintuc` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `danhmuc_sp`
+-- Table structure for table `danhmuc_sp`
 --
 
 CREATE TABLE `danhmuc_sp` (
@@ -65,16 +65,16 @@ CREATE TABLE `danhmuc_sp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `danhmuc_sp`
+-- Dumping data for table `danhmuc_sp`
 --
 
 INSERT INTO `danhmuc_sp` (`id_danhmuc`, `ten_danhmuc`, `trangthai`, `sap_xep`) VALUES
-(2, 'dong ho', b'00000000000000000000000000000000000000000000000000', 1);
+(1, 'dong ho', b'00000000000000000000000000000000000000000000000000', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `danhmuc_tintuc`
+-- Table structure for table `danhmuc_tintuc`
 --
 
 CREATE TABLE `danhmuc_tintuc` (
@@ -86,7 +86,7 @@ CREATE TABLE `danhmuc_tintuc` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `don_dat_hang`
+-- Table structure for table `don_dat_hang`
 --
 
 CREATE TABLE `don_dat_hang` (
@@ -99,7 +99,7 @@ CREATE TABLE `don_dat_hang` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `don_dat_hang_chitiet`
+-- Table structure for table `don_dat_hang_chitiet`
 --
 
 CREATE TABLE `don_dat_hang_chitiet` (
@@ -113,20 +113,7 @@ CREATE TABLE `don_dat_hang_chitiet` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khachhang`
---
-
-CREATE TABLE `khachhang` (
-  `id_khachhang` int(11) NOT NULL,
-  `ten` varchar(255) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `sdt` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `loai`
+-- Table structure for table `loai`
 --
 
 CREATE TABLE `loai` (
@@ -134,10 +121,17 @@ CREATE TABLE `loai` (
   `ten` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `loai`
+--
+
+INSERT INTO `loai` (`id`, `ten`) VALUES
+(1, 'Hải Sản');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sanpham`
+-- Table structure for table `sanpham`
 --
 
 CREATE TABLE `sanpham` (
@@ -153,18 +147,10 @@ CREATE TABLE `sanpham` (
   `id_danhmuc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Đang đổ dữ liệu cho bảng `sanpham`
---
-
-INSERT INTO `sanpham` (`id_sanpham`, `ten_sanpham`, `trangthai`, `img`, `list_img`, `gia`, `gia_sell`, `chi_tiet`, `luot_xem`, `id_danhmuc`) VALUES
-(1, 'dong ho', b'00000000000000000000000000000000000000000000000000', '', '', '0', '0', 'sanpham dong ho', 0, 0),
-(2, 'sadasdasasdasdasddas', b'00000000000000000000000000000000000000000000000000', 'xcacasdas', 'asdasdasd', '200', '120', 'adasdasdasdasd', 1, 2);
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tin_tuc`
+-- Table structure for table `tin_tuc`
 --
 
 CREATE TABLE `tin_tuc` (
@@ -174,121 +160,146 @@ CREATE TABLE `tin_tuc` (
   `luot_xem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Chỉ mục cho các bảng đã đổ
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `diachi` varchar(100) DEFAULT NULL,
+  `image` varchar(100) NOT NULL,
+  `level` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `diachi`, `image`, `level`) VALUES
+(14, 'Nguyễn Danh', '', '11', '0985225130', NULL, '', 2),
+(15, 'Công Danh', '', '11', '1646391669', NULL, '', 0);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `binhluan_sanpham`
+-- Indexes for table `binhluan_sanpham`
 --
 ALTER TABLE `binhluan_sanpham`
   ADD PRIMARY KEY (`id_binhluan`);
 
 --
--- Chỉ mục cho bảng `binhluan_tintuc`
+-- Indexes for table `binhluan_tintuc`
 --
 ALTER TABLE `binhluan_tintuc`
   ADD PRIMARY KEY (`id_binhluan`);
 
 --
--- Chỉ mục cho bảng `danhmuc_sp`
+-- Indexes for table `danhmuc_sp`
 --
 ALTER TABLE `danhmuc_sp`
   ADD PRIMARY KEY (`id_danhmuc`);
 
 --
--- Chỉ mục cho bảng `danhmuc_tintuc`
+-- Indexes for table `danhmuc_tintuc`
 --
 ALTER TABLE `danhmuc_tintuc`
   ADD PRIMARY KEY (`id_danhmuc`);
 
 --
--- Chỉ mục cho bảng `don_dat_hang`
+-- Indexes for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
   ADD PRIMARY KEY (`id_ddh`);
 
 --
--- Chỉ mục cho bảng `don_dat_hang_chitiet`
+-- Indexes for table `don_dat_hang_chitiet`
 --
 ALTER TABLE `don_dat_hang_chitiet`
   ADD PRIMARY KEY (`id_ddh`,`id_sanpham`);
 
 --
--- Chỉ mục cho bảng `khachhang`
---
-ALTER TABLE `khachhang`
-  ADD PRIMARY KEY (`id_khachhang`);
-
---
--- Chỉ mục cho bảng `loai`
+-- Indexes for table `loai`
 --
 ALTER TABLE `loai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `sanpham`
+-- Indexes for table `sanpham`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`id_sanpham`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `binhluan_sanpham`
+-- AUTO_INCREMENT for table `binhluan_sanpham`
 --
 ALTER TABLE `binhluan_sanpham`
   MODIFY `id_binhluan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `binhluan_tintuc`
+-- AUTO_INCREMENT for table `binhluan_tintuc`
 --
 ALTER TABLE `binhluan_tintuc`
   MODIFY `id_binhluan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `danhmuc_sp`
+-- AUTO_INCREMENT for table `danhmuc_sp`
 --
 ALTER TABLE `danhmuc_sp`
   MODIFY `id_danhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `danhmuc_tintuc`
+-- AUTO_INCREMENT for table `danhmuc_tintuc`
 --
 ALTER TABLE `danhmuc_tintuc`
   MODIFY `id_danhmuc` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `don_dat_hang`
+-- AUTO_INCREMENT for table `don_dat_hang`
 --
 ALTER TABLE `don_dat_hang`
   MODIFY `id_ddh` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `don_dat_hang_chitiet`
+-- AUTO_INCREMENT for table `don_dat_hang_chitiet`
 --
 ALTER TABLE `don_dat_hang_chitiet`
   MODIFY `id_ddh` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `khachhang`
---
-ALTER TABLE `khachhang`
-  MODIFY `id_khachhang` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `loai`
+-- AUTO_INCREMENT for table `loai`
 --
 ALTER TABLE `loai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `sanpham`
+-- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
