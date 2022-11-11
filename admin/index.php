@@ -12,26 +12,47 @@ if(isset($_GET['act'])){
     switch ($act) {
         case 'adddm':
             //kiểm tra user đã click vào hay chưa
-            if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
-                $tenloai = $_POST['tenloai'];
-                insert_danhmuc($tenloai);
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $ten_danhmuc = $_POST['ten_danhmuc'];
+                insert_danhmuc($ten_danhmuc);
                 $thongbao = "Thêm mới thành công!";
             }
             include "danhmuc/add.php";
             break;
-        
+
         case 'listdm':
             $listdm = list_danhmuc();
             include "danhmuc/list.php";
             break;
 
-            case 'listsanpham':
-                $listsanpham = list_sanpham();
-                include "sanpham/list.php";
-                break;
+        case 'deldm':
+            if (isset($_GET['id_danhmuc']) && ($_GET['id_danhmuc'] > 0)) {
+                delete_danhmuc($_GET['id_danhmuc']);
+            }
+            $listdm = list_danhmuc();
+            include "danhmuc/list.php";
+            break;
+
+        case 'suadm':
+            if (isset($_GET['id_danhmuc']) && ($_GET['id_danhmuc'] > 0)) {
+                $dm = loadone_danhmuc($_GET['id_danhmuc']);
+            }
+            include "danhmuc/updata.php";
+            break;
+
+        case 'updatedm':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $ten_danhmuc = $_POST['ten_danhmuc'];
+                $id_danhmuc = $_POST['id_danhmuc'];
+                update_danhmuc($id_danhmuc, $ten_danhmuc);
+                $thongbao = "Cập nhật thành công!";
+            }
+
+            $listdm = list_danhmuc();
+            include "danhmuc/list.php";
+            break;
     
         case 'addsanpham':
-
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $id_danhmuc = $_POST['id_danhmuc'];
                 $ten_sanpham = $_POST['ten_sanpham'];
@@ -75,7 +96,6 @@ if(isset($_GET['act'])){
             break;
 
         case 'suasanpham':
-
             if (isset($_GET['id_sanpham']) && ($_GET['id_sanpham'] > 0)) {
                 $sanpham = load_one_sanpham($_GET['id_sanpham']);
             }
@@ -85,7 +105,6 @@ if(isset($_GET['act'])){
             break;
 
         case 'update_sanpham':
-
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $id_danhmuc = $_POST['id_danhmuc'];
                 $id_sanpham = $_POST['id_sanpham'];
@@ -117,6 +136,9 @@ if(isset($_GET['act'])){
             $listdm = list_danhmuc();
             $listsanpham = list_sanpham();
             include "sanpham/list.php";
+            break;
+        case 'listaccount':
+
             break;
     }
 
