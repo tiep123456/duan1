@@ -8,7 +8,7 @@ include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
-
+include "../model/datban.php";
 //controller dieu khien
 if(isset($_GET['act'])){
     $act=$_GET['act'];
@@ -149,6 +149,7 @@ if(isset($_GET['act'])){
             include "taikhoan/list.php";
             break;
         case 'add_acc':
+
             
             break;
         case 'update_acc':
@@ -172,8 +173,13 @@ if(isset($_GET['act'])){
             $listbinhluan = load_binhluan();
             include "binhluan/list.php";
             break;
-    }
+   
+        case 'listdb':
 
+            $list_db = list_db();
+            include "datban/list.php";
+            break;
+    }
 }
 include "../admin/footer.php";
 ?>

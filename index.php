@@ -4,6 +4,7 @@ error_reporting(0);
 ob_start();
 include "./model/pdo.php";
 include "./model/taikhoan.php";
+include "./model/datban.php";
 // include "./model/sanpham.php";
 // include "model/danhmuc.php";
 
@@ -106,13 +107,36 @@ if((isset($_GET['act']))&&($_GET['act'] != "")){
         case 'infouser':
             include "view/infouser.php";
             break;
+        
+        case 'datban':
+            $fullname = $_POST['fullname'];
+            $phone = $_POST['phone'];
+            $so_nguoi = $_POST['so_nguoi'];
+            $thoigian = $_POST['thoigian'];
+            $yeucau = $_POST['yeucau'];
+            
+            if (isset($_SESSION['iduser'])){
+                $_SESSION['login_home'] = true;
+                $id_khachhang=$_SESSION['iduser'];
+                insert_nguoidatban($fullname, $phone, $so_nguoi,$thoigian,$yeucau,$id_khachhang);
+                unset($_SESSION['login_home']);
+                header("location: index.php");
+            }else{
+                $_SESSION['css_reg'] = true;
+                header ("Location: view/taikhoan/login.php");
+            }
+            break;
+
         default:
+
             include "view/home.php";
             break;
 
     }
 }else{
-    // unset($_SESSION['username'];
+    unset($_SESSION['login_home']);
+    // unset($_SESSION['iduser']);
+    // unset($_SESSION['css_reg']);
     include "view/home.php";
 }
 

@@ -11,13 +11,16 @@
     $margin = 'view/css/css3.css';
     $link_img = 'view/img/';
     $link_file = 'view/';
+    $select_folder = '';
     if (isset($_SESSION['login_home'])) {
         $css3 = 'css/style.css';
         $style = 'css/css3.css';
         $margin = 'css/margin.css';
         $link_img = 'img/';
         $link_file = '';
+        $select_folder = '../';
     }
+    $_SESSION['login_home'] = true;
     ?>
     <link rel="stylesheet" href="<?=$style?>">
     <link rel="stylesheet" href="<?=$margin?>">
@@ -226,13 +229,13 @@
                 </div>
 
                 <div class="row form">
-                    <form action="" class="dacbanonline">
-                        <input type="text" class="box-text  mr10pt" placeholder="Họ và tên" >
-                        <input type="text" class="number" placeholder="Số điện thoại">
-                        <input type="date" class="date mr10pt" placeholder="Ngày tháng">
-                        <input type="time" class="box-text " >
-                        <textarea name=""  id="yeucau-datbang" class="row" cols="30" rows="10" placeholder="Yều cầu đặt biệt"></textarea>
-                        <input type="submit" class="datngay" placeholder="Đặt Ngay">
+                    <form action="<?=$select_folder?>index.php?act=datban" class="dacbanonline" method="post">
+                        <input type="text" name="fullname" class="box-text  mr10pt" placeholder="Họ và tên" >
+                        <input type="text" name="phone" class="number" placeholder="Số điện thoại">
+                        <input type="text" name="so_nguoi" class="date mr10pt" placeholder="Số Người">
+                        <input type="text" name="thoigian" class="box-text " placeholder="Thời gian VD: 10:30" >
+                        <textarea name="yeucau"  id="yeucau-datbang" class="row" cols="30" rows="10" placeholder="Yều cầu đặt biệt"></textarea>
+                        <input type="submit" class="datngay" name="datban" placeholder="Đặt Ngay">
                     </form>
                 </div>
             </div>

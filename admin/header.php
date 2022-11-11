@@ -80,13 +80,13 @@
                                         
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
+                                        Hàng Hóa
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="index.php?act=listdb">Đơn Hàng</a>
+                                            <a class="nav-link" href="404.html">Thống Kê</a>
                                             <a class="nav-link" href="500.html">500 Page</a>
                                         </nav>
                                     </div>
