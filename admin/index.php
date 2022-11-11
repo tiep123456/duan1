@@ -165,12 +165,10 @@ if(isset($_GET['act'])){
             $listbinhluan = load_binhluan(0);
             include "binhluan/list.php";
             break;
-
         case 'xoabl':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 delete_binhluan($_GET['id']);
             }
-
             $listbinhluan = load_binhluan();
             include "binhluan/list.php";
             break;
