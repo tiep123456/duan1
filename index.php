@@ -119,8 +119,8 @@ if((isset($_GET['act']))&&($_GET['act'] != "")){
                 $_SESSION['login_home'] = true;
                 $id_khachhang=$_SESSION['iduser'];
                 insert_nguoidatban($fullname, $phone, $so_nguoi,$thoigian,$yeucau,$id_khachhang);
-                unset($_SESSION['login_home']);
-                header("location: index.php");
+                // unset($_SESSION['login_home']);
+                header("location: view/home.php");
             }else{
                 $_SESSION['css_reg'] = true;
                 header ("Location: view/taikhoan/login.php");
