@@ -34,7 +34,7 @@
             <div class="menu-ngang ">
                 <ul>
                     <li class="mr16 "><a href="<?=$link_file?>home.php">TRANG CHỦ</a></li>
-                    <li class="mr16"><a href="<?=$link_file?>shop.html">THỰC ĐƠN</a></li>
+                    <li class="mr16"><a href="<?=$link_file?>shop.php">THỰC ĐƠN</a></li>
                     <li class="mr16"><a href="#">LIÊN HỆ</a></li>
                     <li class="mr16"><a href="#">TIN TỨC</a></li>
                     <li ><a href="">ĐẶT BÀN</a></li>

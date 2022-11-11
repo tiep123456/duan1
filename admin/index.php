@@ -2,9 +2,12 @@
 include "../admin/header.php";
 include "../admin/main.php";
 
+// model php
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
+include "../model/taikhoan.php";
+include "../model/binhluan.php";
 
 //controller dieu khien
 if(isset($_GET['act'])){
@@ -52,6 +55,10 @@ if(isset($_GET['act'])){
             include "danhmuc/list.php";
             break;
     
+        case 'listsanpham':
+            $listsanpham = list_sanpham();
+            include "sanpham/list.php";
+            break;
         case 'addsanpham':
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $id_danhmuc = $_POST['id_danhmuc'];
@@ -138,7 +145,34 @@ if(isset($_GET['act'])){
             include "sanpham/list.php";
             break;
         case 'listaccount':
+            $list_acc = list_taikhoan();
+            include "taikhoan/list.php";
+            break;
+        case 'add_acc':
+            
+            break;
+        case 'update_acc':
+        
+            break;
+        case 'xoa_acc':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                delete_taikhoan($_GET['id']);
+            }
+            $list_acc = list_taikhoan();
+            include "taikhoan/list.php";
+            break;
+        case 'bl':
+            $listbinhluan = load_binhluan(0);
+            include "binhluan/list.php";
+            break;
 
+        case 'xoabl':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_binhluan($_GET['id']);
+            }
+
+            $listbinhluan = load_binhluan();
+            include "binhluan/list.php";
             break;
     }
 
